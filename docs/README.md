@@ -53,7 +53,7 @@ If columns are specified explicitly, then unlabeled data becomes labeled, and la
 ### `DATETIME`
 
 ~~~
-DATETIME,[NONE|<int> [<int>]]
+DATETIME,[NONE| ROW <rows>|COLUMN <columns>]
 ~~~
 
 Specifies the column(s) the contain date/time values to which `TIMEZONE` cleaning must be applied.  Default is `NONE`.
@@ -89,15 +89,15 @@ If `ROW` or `COLUMN` is specified the interpolation is limited on the horizontal
 ### `MIN`
 
 ~~~
-MIN,[NONE|<real>] [CLIP|CLAMP|<real>]
+MIN,[NONE|<real>] [CLIP|CLAMP|<real>] [ROW <rows>|COLUMN <columns>]
 ~~~
 
-Minimum value disposition (default is `NONE`).
+Specifies the minimum value disposition (default is `NONE`).
 
 ### `MAX`
 
 ~~~
-MAX,[NONE|<real>] [CLIP|CLAMP]<real>]
+MAX,[NONE|<real>] [CLIP|CLAMP]<real>] [ROW <rows>|COLUMN <columns>]
 ~~~
 
 Maximum value disposition (default is `NONE`).
@@ -122,7 +122,7 @@ If rows are specified explicitly, then unlabeled data becomes labeled, and label
 
 ### `TIMEZONE`
 ~~~
-TIMEZONE,[NONE|AUTO|<locale>|<tzinfo>]
+TIMEZONE,[NONE|AUTO|<locale>|<tzinfo>] [ROW <rows>|COLUMN <columns>]
 ~~~
 
 Timezone correction (default is `NONE`)
