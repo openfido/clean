@@ -7,7 +7,7 @@ Options:
   -c|--config-csv     specify config.csv filename
 
 Config.csv:
-	INPUT,f<ile1> [<file2> [...]]            files to process (default is *.csv)
+	INPUT,<file1> [<file2> [...]]            files to process (default is *.csv)
 	MIN,[NONE|<real>] [CLIP|CLAMP|<real>]    minimum value disposition (default is NONE)
 	MAX,[NONE|<real>] [CLIP|CLAMP]<real>]    maximum value disposition (default is NONE)
 	HOLD,[NONE|0|1] [ROW|COLUMN]             hold order (default is NONE)
@@ -16,11 +16,11 @@ Config.csv:
 	DATETIME,[NONE|<int>]                    datetime column (default is NONE)
 
 Exit codes:
-	E_OK (0)   normal exit
-	E_USAGE    command line error
-	E_INPUT    missing input folder
-	E_OUTPUT   missing output folder
-	E_CONFIG   missing config.csv file
+	E_OK (0)      normal exit
+	E_USAGE (1)   command line error
+	E_INPUT (2)   missing input folder
+	E_OUTPUT (3)  missing output folder
+	E_CONFIG (4)  missing config.csv file
 """
 import sys, os
 import getopt
