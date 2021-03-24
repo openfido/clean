@@ -102,7 +102,7 @@ If `ROW` or `COLUMN` is specified the interpolation is limited on the horizontal
 MIN,[NONE|<real>] [CLIP|CLAMP|<real>] [ROW <rows>|COLUMN <columns>]
 ~~~
 
-Specifies the minimum value disposition (default is `NONE`).
+Specifies the minimum value disposition (default is `NONE`). If a value is specified, then it may clipped (i.e., replaced with `NA`), clamped (i.e., truncated to the minimum value), or replaced with a specified value.  If `ROW` or `COLUMN` may be use to limit the process to only specified rows or columns.
 
 ### `MAX`
 
@@ -110,15 +110,16 @@ Specifies the minimum value disposition (default is `NONE`).
 MAX,[NONE|<real>] [CLIP|CLAMP]<real>] [ROW <rows>|COLUMN <columns>]
 ~~~
 
-Maximum value disposition (default is `NONE`).
+Specifies the maximum value disposition (default is `NONE`). If a value is specified, then it may clipped (i.e., replaced with `NA`), clamped (i.e., truncated to the maximum value), or replaced with a specified value.  If `ROW` or `COLUMN` may be use to limit the process to only specified rows or columns.
+
 
 ### `NA`
 
 ~~~
-NA,[NONE|DROPROW|DROPCOL|<real>]
+NA,[NONE|DROP|<real>] [ROW <rows>] [COLUMN <columns>]
 ~~~
 
-NA disposition (default is `NONE`)
+Specifies the disposition of `NA` values.  If `DROP` is specified then the entire row or column is removed.  If a value is provided, then the `NA` is replaced with the specified value. The default operation is `NONE`. The default axis is `ROW`. Use `<rows>` or `<columns>` to limit the process for only those rows or columns specified. Note that unlike most other processes, both `ROW` and `COLUMN` may be specified, in which case both the row and column containing `NA` values will be removed.
 
 ### `ROWS`
 
@@ -135,7 +136,7 @@ If rows are specified explicitly, then unlabeled data becomes labeled, and label
 TIMEZONE,[NONE|AUTO|<locale>|<tzinfo>] [ROW <rows>|COLUMN <columns>]
 ~~~
 
-Timezone correction (default is `NONE`)
+Specifies the timezone correction to apply, if any.  `AUTO` will automatically detected the existence of a daylight savings time in a column or row by looking for a missing 2am record on a Sunday in spring and a duplicate 2am record on a Sunday in the fall.  If these conditions are satisfied in a date/time column or row, then daylight savings time rules will be applied to all the date/time values in the column or row.  If a locale or timezone specification is used, then the appropriate timezone is applied to the date/time values.
 
 ## Exit codes
 

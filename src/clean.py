@@ -14,7 +14,7 @@ Config.csv:
 	                                maximum value disposition (default is NONE)
 	HOLD,[NONE|<int>] [ROW [<rows>]|COLUMN [<columns>]]
 	                                hold order (default is NONE)
-	NA,[NONE|DROP|<real>][ROW <rows>|COLUMN <columns>]
+	NA,[NONE|DROP|<real>] [ROW <rows>] [COLUMN <columns>]
 	                                NA disposition (default is NONE)
 	INTERPOLATE,[NONE|<order> [ROW [<rows>]|COLUMN [<columns>]]
 	                                interpolate data (default is NONE)
