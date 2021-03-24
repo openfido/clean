@@ -39,21 +39,34 @@ Specify config.csv filename
 
 The `config.csv` controls the clean operations.
 
+### `COLUMNS`
+
+~~~
+COLUMNS=[NONE|AUTO]
+~~~
+
+Specify how the columns are labeled. Use `NONE` for unlabeled data and `AUTO` for labeled data.  Default is `NONE`. 
+
+If columns are specified explicitly, then unlabeled data becomes labeled, and labeled data is relabeled.  In this case the number of labels must match the number of columns. 
+
+
 ### `DATETIME`
 
 ~~~
-DATETIME,[NONE|<int>]
+DATETIME,[NONE|<int> [<int>]]
 ~~~
 
-Datetime column (default is `NONE`)
+Specifies the column(s) the contain date/time values to which `TIMEZONE` cleaning must be applied.  Default is `NONE`.
 
 ### `HOLD`
 
 ~~~
-HOLD,[NONE|0|1] [ROW|COLUMN]
+HOLD,[NONE|<int>] [ROW [<rows>]|COLUMN [<columns>]]
 ~~~
 
-Hold order (default is `NONE`).
+Specifies the hold order to be applied. Use 0 for a zero-order hold and 1 for a first-order hold.  Higher order holds are not supported.  The default is `NONE`.
+
+If `ROW` or `COLUMN` is specified the hold is applied on the horizontal or vertical axis, respectively.  The default is `COLUMN`.  If `<rows>` or `<columns>` is specified, the hold is limited to those, otherwise it is applied to all rows or columns.
 
 ### `INPUT`
 
@@ -62,6 +75,16 @@ INPUT,<file1> [<file2> [...]]
 ~~~
 
 Files to process (default is `*.csv`).
+
+### `INTERPOLATE`
+
+~~~
+INTERPOLATE,[NONE|<order> [ROW [<rows>]|COLUMN [<columns>]]
+~~~
+
+Specifies the interpolation order to be applied to missing data. Use 0 for nearest, 1 for a for linear, 2 for quadratic, 3 for cubic spline.  The default is `NONE`.
+
+If `ROW` or `COLUMN` is specified the interpolation is limited on the horizontal or vertical axis, respectively.  If neither is specified a 2D interpolation is used. If `<rows>` or `<columns>` is specified, the interpolation is limited to those, otherwise it is applied to all rows or columns.
 
 ### `MIN`
 
@@ -86,6 +109,16 @@ NA,[NONE|DROPROW|DROPCOL|<real>]
 ~~~
 
 NA disposition (default is `NONE`)
+
+### `ROWS`
+
+~~~
+ROWS=[NONE|AUTO|<row-1>,<row-2>,...,<row-N>]
+~~~
+
+Specify how the rows are labeled. Use `NONE` for unlabeled data and `AUTO` for labeled data.  Default is `NONE`. 
+
+If rows are specified explicitly, then unlabeled data becomes labeled, and labeled data is relabeled.  In this case the number of labels must match the number of rows. 
 
 ### `TIMEZONE`
 ~~~

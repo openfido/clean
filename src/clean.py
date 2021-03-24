@@ -10,10 +10,15 @@ Config.csv:
 	INPUT,<file1> [<file2> [...]]            files to process (default is *.csv)
 	MIN,[NONE|<real>] [CLIP|CLAMP|<real>]    minimum value disposition (default is NONE)
 	MAX,[NONE|<real>] [CLIP|CLAMP]<real>]    maximum value disposition (default is NONE)
-	HOLD,[NONE|0|1] [ROW|COLUMN]             hold order (default is NONE)
+	HOLD,[NONE|<int>] [ROW [<rows>]|COLUMN [<columns>]]
+	                                         hold order (default is NONE)
 	NA,[NONE|DROPROW|DROPCOL|<real>]         NA disposition (default is NONE)
+	INTERPOLATE,[NONE|<order> [ROW [<rows>]|COLUMN [<columns>]]
+	                                         interpolate data (default is NONE)
 	TIMEZONE,[NONE|AUTO|<locale>|<tzinfo>]   timezone correction (default is NONE)
 	DATETIME,[NONE|<int>]                    datetime column (default is NONE)
+	COLUMNS,[NONE|AUTO|<labels>]             column labels
+	ROWS,[NONE|AUTO|<labels>]                row labels
 
 Exit codes:
 	E_OK (0)      normal exit
@@ -22,9 +27,8 @@ Exit codes:
 	E_OUTPUT (3)  missing output folder
 	E_CONFIG (4)  missing config.csv file
 """
-import sys, os
-import getopt
-import numpy, scipy, pandas
+import sys, os, getopt
+import csv, pandas
 
 E_OK = 0
 E_USAGE = 1
@@ -66,6 +70,7 @@ for opt, arg in opts:
 	else:
 		raise Exception(f"option {opt}={arg} is not valid")
 
+# check command line options
 if not os.path.exists(input_folder):
 	error(f"input folder '{input_folder}' does not exist",E_INPUT)
 if not os.path.exists(output_folder):
@@ -73,5 +78,15 @@ if not os.path.exists(output_folder):
 if not os.path.exists(config_csv):
 	error(f"config file '{config_csv}' does not exist",E_CONFIG)
 
-raise Exception("not fully implemented yet")
+config = {
+	"INPUT" : [],
+	"MIN" : None,
+	"MAX" : None,
+	"NA" : None,
+}
+with open(config_csv) as fh:
+	reader = csv.reader(fh)
+	for row in reader:
+		if not row[0] in config.keys():
+			raise Exception(f"{row}: config key is not valid")
 

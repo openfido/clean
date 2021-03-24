@@ -13,10 +13,15 @@ Config.csv:
 	INPUT,<file1> [<file2> [...]]            files to process (default is *.csv)
 	MIN,[NONE|<real>] [CLIP|CLAMP|<real>]    minimum value disposition (default is NONE)
 	MAX,[NONE|<real>] [CLIP|CLAMP]<real>]    maximum value disposition (default is NONE)
-	HOLD,[NONE|0|1] [ROW|COLUMN]             hold order (default is NONE)
+	HOLD,[NONE|<int>] [ROW [<rows>]|COLUMN [<columns>]]
+	                                         hold order (default is NONE)
 	NA,[NONE|DROPROW|DROPCOL|<real>]         NA disposition (default is NONE)
+	INTERPOLATE,[NONE|<order> [ROW [<rows>]|COLUMN [<columns>]]
+	                                         interpolate data (default is NONE)
 	TIMEZONE,[NONE|AUTO|<locale>|<tzinfo>]   timezone correction (default is NONE)
 	DATETIME,[NONE|<int>]                    datetime column (default is NONE)
+	COLUMNS,[NONE|AUTO|<labels>]             column labels
+	ROWS,[NONE|AUTO|<labels>]                row labels
 
 Exit codes:
 	E_OK (0)      normal exit
