@@ -11,13 +11,13 @@ Options:
 
 Config.csv:
 	INPUT,<file1> [<file2> [...]]   files to process (default is *.csv)
-	MIN,[NONE|<real>] [CLIP|CLAMP|<real>] [ROW <rows>|COLUMN <columns}]
+	MIN,[NONE|<real>] [CLIP|CLAMP|<real>] [ROW <rows>|COLUMN <columns>]
 	                                minimum value disposition (default is NONE)
-	MAX,[NONE|<real>] [CLIP|CLAMP]<real>] [ROW <rows>|COLUMN <columns}]
+	MAX,[NONE|<real>] [CLIP|CLAMP]<real>] [ROW <rows>|COLUMN <columns>]
 	                                maximum value disposition (default is NONE)
 	HOLD,[NONE|<int>] [ROW [<rows>]|COLUMN [<columns>]]
 	                                hold order (default is NONE)
-	NA,[NONE|DROP|<real>][ROW <rows>|COLUMN <columns}]
+	NA,[NONE|DROP|<real>][ROW <rows>|COLUMN <columns>]
 	                                NA disposition (default is NONE)
 	INTERPOLATE,[NONE|<order> [ROW [<rows>]|COLUMN [<columns>]]
 	                                interpolate data (default is NONE)
@@ -27,6 +27,8 @@ Config.csv:
 	                                datetime column (default is NONE)
 	COLUMNS,[NONE|AUTO|<labels>]    column labels (default is NONE)
 	ROWS,[NONE|AUTO|<labels>]       row labels (default is NONE)
+	FILTER,[NONE|<tf>] [ROW <rows>|COLUMN <columns>]
+	                                filter using a discrete transfer function
 
 Exit codes:
 	E_OK (0)      normal exit

@@ -13,6 +13,8 @@ The `clean` pipeline perform data cleaning operations on unlabeled and labeled d
   - **Range limits**: `MIN` and `MAX` may be used to impose range limits on the data.  
   - **NA disposition**: `NA` may be used to drop rows or columns with missing data
   - **Data hold**: `HOLD` may be used to fill missing data.
+  - **Interpolation**: `INTERPOLATE` may be used to fill missing data.
+  - **Filter data**: `FILTER` may be used to apply a discrete transfer function
   - **Date/time correction**: `DATETIME` and `TIMEZONE` may be used to correct timezones.
 
 ## Options
@@ -57,6 +59,14 @@ DATETIME,[NONE| ROW <rows>|COLUMN <columns>]
 ~~~
 
 Specifies the column(s) the contain date/time values to which `TIMEZONE` cleaning must be applied.  Default is `NONE`.
+
+### `FILTER`
+
+~~~
+FILTER=[NONE|<tf> [ROW <rows>|COLUMN <columns>]]
+~~~
+
+Specifies a discrete transfer function to apply to the data.  The function `<tf>` must be specified in the form `b_0+b_1*z+b_2*z^2+...+b_M^z^M/a_0+a_1*z+a_2*z^2+...+a_N^z^N` or `a_0,a_1,a_2,...,a_N;b_0,b_1,b_2,...,b_M`.
 
 ### `HOLD`
 
